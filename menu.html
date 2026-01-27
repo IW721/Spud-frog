@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spud & Frog — Menu</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; background:#f6f6f6; color:#111; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 16px; }
+    .hero {
+      background:#fff; border-radius: 16px; padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.07);
+      text-align: center;
+    }
+
+    .logo {
+      display:block; width: 140px; height:auto;
+      margin: 0 auto 10px auto;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.10);
+    }
+
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    .sub { margin: 0; color:#444; font-size: 15px; }
+
+    .bar {
+      display:flex; gap: 12px; align-items:center; justify-content:center;
+      margin-top: 14px; flex-wrap: wrap;
+    }
+    .btn {
+      display:inline-block; background:#111; color:#fff; text-decoration:none;
+      padding: 12px 16px; border-radius: 12px; font-weight: 800;
+    }
+    .btnSecondary {
+      display:inline-block; background:#fff; color:#111; text-decoration:none;
+      padding: 12px 16px; border-radius: 12px; font-weight: 800; border:1px solid #ddd;
+    }
+    .tag { display:inline-block; font-size: 12px; padding: 6px 10px; border-radius: 999px; background:#f1f1f1; }
+
+    .note {
+      margin-top: 14px; color:#444; font-size: 14px;
+      background:#fff; border:1px dashed #ddd; border-radius: 14px; padding: 12px;
+      text-align: left;
+    }
+
+    .grid { display:grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
+    @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .card {
+      background:#fff; border-radius: 16px; padding: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+      text-align:left;
+    }
+    h2 { margin: 0 0 10px; font-size: 18px; display:flex; justify-content:space-between; align-items:center; }
+    .pill { font-size: 12px; padding: 6px 10px; border-radius: 999px; background:#f1f1f1; color:#333; }
+
+    .item { display:flex; justify-content:space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .item:last-child { border-bottom: none; }
+    .name { font-weight: 650; }
+    .desc { font-size: 12px; color:#666; margin-top: 2px; max-width: 70%; }
+    .price { font-weight: 800; white-space: nowrap; }
+
+    .footer { color:#666; font-size: 12px; text-align:center; margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <img class="logo" src="images/logo.jpg" alt="Spud & Frog logo" />
+      <h1>Spud & Frog</h1>
+      <p class="sub">Worksite meals — simple, hot, and ready.</p>
+
+      <div class="bar">
+        <a class="btn" href="form.html">Order Now</a>
+        <a class="btnSecondary" href="index.html">Home</a>
+        <span class="tag">Breakfast</span>
+        <span class="tag">Lunch</span>
+        <span class="tag">Snacks</span>
+      </div>
+
+      <div class="note">
+        <strong>How ordering works:</strong> Tap <strong>Order Now</strong>, choose your date(s), pick Breakfast/Lunch/Snacks, then add quantities.
+        <div style="margin-top:6px;"><strong>Halal option:</strong> Check the Halal box on the order form.</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- BREAKFAST -->
+      <div class="card">
+        <h2>Breakfast <span class="pill">Morning</span></h2>
+
+        <!-- Edit items/prices/descriptions below -->
+        <div class="item">
+          <div>
+            <div class="name">Breakfast Sandwich</div>
+            <div class="desc">2 Egg + cheese</div>
+          </div>
+          <div class="price">$3.00</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Egg &amp; Cheese Wrap</div>
+            <div class="desc">Quick and filling</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Coffee</div>
+            <div class="desc">Hot cup</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Oatmeal Cup</div>
+            <div class="desc">Grab-and-go</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+      </div>
+
+      <!-- LUNCH -->
+      <div class="card">
+        <h2>Lunch <span class="pill">Midday</span></h2>
+
+        <div class="item">
+          <div>
+            <div class="name">Basic Burger</div>
+            <div class="desc">Beef + bun (simple)</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Mac &amp; Cheese</div>
+            <div class="desc">Oven-baked comfort</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Chili</div>
+            <div class="desc">Hearty bowl</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Beef Stew</div>
+            <div class="desc">Slow-cooked</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+      </div>
+
+      <!-- SNACKS -->
+      <div class="card">
+        <h2>Snacks <span class="pill">Anytime</span></h2>
+
+        <div class="item">
+          <div>
+            <div class="name">Chips</div>
+            <div class="desc">Single bag</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Cookie</div>
+            <div class="desc">Sweet bite</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Granola Bar</div>
+            <div class="desc">Quick energy</div>
+          </div>
+          <div class="price">$</div>
+        </div>
+
+        <div class="item">
+          <div>
+            <div class="name">Pop</div>
+            <div class="desc">Cold can
