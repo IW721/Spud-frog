@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spud & Frog — Menu (Detailed)</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin:0; background:#f6f6f6; color:#111; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 16px; }
+
+    .hero{
+      background:#fff; border-radius:16px; padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,.07);
+      text-align:center;
+    }
+    .logo{
+      display:block; width:140px; height:auto; margin:0 auto 10px;
+      border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,.10);
+    }
+    h1{ margin:0 0 6px; font-size:28px; }
+    .sub{ margin:0; color:#444; font-size:15px; }
+
+    .bar{
+      display:flex; gap:12px; align-items:center; justify-content:center;
+      margin-top:14px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-block; background:#111; color:#fff; text-decoration:none;
+      padding:12px 16px; border-radius:12px; font-weight:800;
+    }
+    .btnSecondary{
+      display:inline-block; background:#fff; color:#111; text-decoration:none;
+      padding:12px 16px; border-radius:12px; font-weight:800; border:1px solid #ddd;
+    }
+    .tag{ display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:#f1f1f1; }
+
+    .note{
+      margin-top:14px; color:#444; font-size:14px;
+      background:#fff; border:1px dashed #ddd; border-radius:14px; padding:12px;
+      text-align:left;
+    }
+
+    /* Filters */
+    .filters{
+      margin-top:14px;
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+    }
+    .chip{
+      border:1px solid #ddd; background:#fff; color:#111;
+      padding:10px 12px; border-radius:999px; font-weight:700; cursor:pointer;
+      user-select:none;
+    }
+    .chip[aria-pressed="true"]{ background:#111; color:#fff; border-color:#111; }
+
+    /* Sections + cards */
+    .section{
+      margin-top:16px;
+      background:#fff; border-radius:16px; padding:14px;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+    .sectionHead{
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      margin-bottom:10px;
+    }
+    .sectionHead h2{ margin:0; font-size:18px; }
+    .pill{ font-size:12px; padding:6px 10px; border-radius:999px; background:#f1f1f1; color:#333; }
+
+    .grid{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 740px){ .grid{ grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1020px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }
+
+    .card{
+      border:1px solid #eee; border-radius:16px; overflow:hidden; background:#fff;
+      display:flex; flex-direction:column;
+    }
+    .photo{
+      aspect-ratio: 4 / 3;
+      width:100%;
+      background:#f0f0f0;
+      object-fit:cover;
+      display:block;
+    }
+    .cardBody{ padding:12px; display:flex; flex-direction:column; gap:8px; }
+    .titleRow{ display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
+    .name{ font-weight:900; font-size:16px; line-height:1.15; }
+    .price{
+      font-weight:900; white-space:nowrap;
+      background:#111; color:#fff; padding:6px 10px; border-radius:999px;
+      font-size:13px;
+    }
+    .desc{ color:#444; font-size:13px; line-height:1.35; }
+    .badges{ display:flex; flex-wrap:wrap; gap:6px; }
+    .badge{
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      background:#f1f1f1; color:#111; border:1px solid #eee;
+      font-weight:700;
+    }
+
+    .addons{
+      border-top:1px solid #f0f0f0; padding-top:10px; margin-top:2px;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .addonsLabel{ font-weight:900; font-size:12px; color:#222; letter-spacing:.2px; }
+    .addonList{ margin:0; padding-left:18px; color:#333; font-size:13px; }
+    .addonList li{ margin:3px 0; }
+
+    .footer{ color:#666; font-size:12px; text-align:center; margin:14px 0 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <img class="logo" src="images/logo.jpg" alt="Spud & Frog logo" />
+      <h1>Spud & Frog</h1>
+      <p class="sub">Worksite meals — delicious, hearty and ready to nuke!</p>
+
+      <div class="bar">
+        <a class="btn" href="form.html">Order Now</a>
+        <a class="btnSecondary" href="index.html">Home</a>
+        <span class="tag">Photos</span>
+        <span class="tag">Item-by-item add-ons</span>
+        <span class="tag">Blank prices show $—</span>
+      </div>
+
+      <div class="note">
+        <strong>How ordering works:</strong> Tap <strong>Order Now</strong>, choose your date(s), pick items, then add quantities.
+        <div style="margin-top:6px;"><strong>Halal option:</strong> Mark “Halal” on the order form (where available).</div>
+      </div>
+
+      <div class="filters" id="filters"></div>
+    </div>
+
+    <div id="sections"></div>
+
+    <div class="footer">
+      © <span id="y"></span> Spud &amp; Frog • Prices subject to change • Worksite pickup / delivery as arranged
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Put your photos in: images/items/...
+    // Blank or missing price => shows "$—"
+    // Empty or missing addons => add-ons block is hidden (per your preference)
+    const items = [
+      {
+        category: "Breakfast",
+        label: "Morning",
+        name: "Breakfast Sandwich",
+        desc: "2 eggs + cheese on a bun. Fast, filling, no nonsense.",
+        price: "$3.00",
+        img: "images/items/breakfast-sandwich.jpg",
+        badges: ["Grab & Go"],
+        addonsTitle: "Extras (add-on)",
+        addons: ["Extra cheese (+$1.00)", "Add bacon (+$2.00)"]
+      },
+      {
+        category: "Lunch",
+        label: "Midday",
+        name: "Hamburger",
+        desc: "Beef + bun (simple). Add-ons make it yours.",
+        price: "",
+        img: "images/items/hamburger.jpg",
+        badges: ["Hearty"],
+        addonsTitle: "Toppings extra",
+        addons: ["Cheese (+$1.00)", "Bacon (+$2.00)", "Jalapeños (+$1.00)"]
+      },
+      {
+        category: "Snacks",
+        label: "Anytime",
+        name: "Chips",
+        desc: "Grab-and-go.",
+        price: "",
+        img: "images/items/chips.jpg",
+        badges: ["Quick"],
+        addons: [] // no add-ons => hidden
+      }
+    ];
+
+    // Category filter UI
+    const categories = ["All", ...Array.from(new Set(items.map(i => i.category)))];
+    const filtersEl = document.getElementById("filters");
+    let active = "All";
+
+    function makeChip(cat){
+      const b = document.createElement("button");
+      b.className = "chip";
+      b.type = "button";
+      b.textContent = cat;
+      b.setAttribute("aria-pressed", cat === active ? "true" : "false");
+      b.onclick = () => {
+        active = cat;
+        document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed","false"));
+        b.setAttribute("aria-pressed","true");
+        render();
+      };
+      return b;
+    }
+    categories.forEach(c => filtersEl.appendChild(makeChip(c)));
+
+    // Render sections grouped by category
+    const sectionsEl = document.getElementById("sections");
+
+    function render(){
+      sectionsEl.innerHTML = "";
+
+      const visible = active === "All" ? items : items.filter(i => i.category === active);
+      const grouped = visible.reduce((acc, item) => {
+        acc[item.category] = acc[item.category] || { label: item.label || "", items: [] };
+        acc[item.category].items.push(item);
+        return acc;
+      }, {});
+
+      Object.keys(grouped).forEach(cat => {
+        const sec = document.createElement("div");
+        sec.className = "section";
+
+        const head = document.createElement("div");
+        head.className = "sectionHead";
+
+        const h2 = document.createElement("h2");
+        h2.textContent = cat;
+
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.textContent = grouped[cat].label || "Menu";
+
+        head.appendChild(h2);
+        head.appendChild(pill);
+
+        const grid = document.createElement("div");
+        grid.className = "grid";
+
+        grouped[cat].items.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          const img = document.createElement("img");
+          img.className = "photo";
+          img.src = item.img || "";
+          img.alt = item.name || "";
+
+          const body = document.createElement("div");
+          body.className = "cardBody";
+
+          const titleRow = document.createElement("div");
+          titleRow.className = "titleRow";
+
+          const name = document.createElement("div");
+          name.className = "name";
+          name.textContent = item.name || "";
+
+          const price = document.createElement("div");
+          price.className = "price";
+          const p = (item.price || "").trim();
+          price.textContent = p ? p : "$—";
+
+          titleRow.appendChild(name);
+          titleRow.appendChild(price);
+
+          body.appendChild(titleRow);
+
+          if ((item.desc || "").trim()){
+            const desc = document.createElement("div");
+            desc.className = "desc";
+            desc.textContent = item.desc;
+            body.appendChild(desc);
+          }
+
+          if ((item.badges || []).length){
+            const badges = document.createElement("div");
+            badges.className = "badges";
+            (item.badges || []).forEach(b => {
+              const s = document.createElement("span");
+              s.className = "badge";
+              s.textContent = b;
+              badges.appendChild(s);
+            });
+            body.appendChild(badges);
+          }
+
+          // Add-ons: HIDE if none
+          const addonsArr = Array.isArray(item.addons) ? item.addons.filter(x => (x || "").trim()) : [];
+          if (addonsArr.length){
+            const addons = document.createElement("div");
+            addons.className = "addons";
+
+            const addonsLabel = document.createElement("div");
+            addonsLabel.className = "addonsLabel";
+            addonsLabel.textContent = (item.addonsTitle || "Add-ons").trim();
+
+            const ul = document.createElement("ul");
+            ul.className = "addonList";
+            addonsArr.forEach(a => {
+              const li = document.createElement("li");
+              li.textContent = a;
+              ul.appendChild(li);
+            });
+
+            addons.appendChild(addonsLabel);
+            addons.appendChild(ul);
+            body.appendChild(addons);
+          }
+
+          card.appendChild(img);
+          card.appendChild(body);
+          grid.appendChild(card);
+        });
+
+        sec.appendChild(head);
+        sec.appendChild(grid);
+        sectionsEl.appendChild(sec);
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
