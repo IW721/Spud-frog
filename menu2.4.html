@@ -108,6 +108,20 @@
     .addonList li{ margin:3px 0; }
 
     .footer{ color:#666; font-size:12px; text-align:center; margin:14px 0 6px; }
+  
+    /* Footer social link */
+    .footer .social{
+      margin-top:10px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      color:#111;
+      font-weight:800;
+    }
+    .footer .social svg{ width:18px; height:18px; display:block; }
+    .footer .social:hover{ text-decoration:underline; }
+
   </style>
 </head>
 <body>
@@ -137,6 +151,14 @@
 
     <div class="footer">
       © <span id="y"></span> Spud &amp; Frog • Prices subject to change • Worksite pickup / delivery as arranged
+      <div style="margin-top:8px;">
+        <a class="social" href="https://www.instagram.com/spud_frog/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a6 6 0 1 1 0 12a6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm6.5-.9a1.1 1.1 0 1 1 0 2.2a1.1 1.1 0 0 1 0-2.2z"/>
+          </svg>
+          <span>@spudnfrog</span>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -153,7 +175,7 @@
         name: "Breakfast Sandwich",
         desc: "2 eggs + cheese on a bun. Fast, filling, no nonsense.",
         price: "$3.00",
-        img: "images/Construction.png",
+        img: "images/construction.png",
         badges: ["Grab & Go"],
         addonsTitle: "Extras (add-on)",
         addons: ["Extra cheese (+$1.00)", "Add bacon (+$2.00)"]
