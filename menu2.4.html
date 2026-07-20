@@ -2,146 +2,290 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spud & Frog — Menu (Detailed)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spud & Frog — Menu</title>
+
   <style>
-    body { font-family: system-ui, Arial, sans-serif; margin:0; background:#f6f6f6; color:#111; }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 16px; }
-
-    .hero{
-      background:#fff; border-radius:16px; padding:18px;
-      box-shadow:0 6px 18px rgba(0,0,0,.07);
-      text-align:center;
-    }
-    .logo{
-      display:block; width:140px; height:auto; margin:0 auto 10px;
-      border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,.10);
-    }
-    h1{ margin:0 0 6px; font-size:28px; }
-    .sub{ margin:0; color:#444; font-size:15px; }
-
-    .bar{
-      display:flex; gap:12px; align-items:center; justify-content:center;
-      margin-top:14px; flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-block; background:#111; color:#fff; text-decoration:none;
-      padding:12px 16px; border-radius:12px; font-weight:800;
-    }
-    .btnSecondary{
-      display:inline-block; background:#fff; color:#111; text-decoration:none;
-      padding:12px 16px; border-radius:12px; font-weight:800; border:1px solid #ddd;
-    }
-    .tag{ display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:#f1f1f1; }
-
-    .note{
-      margin-top:14px; color:#444; font-size:14px;
-      background:#fff; border:1px dashed #ddd; border-radius:14px; padding:12px;
-      text-align:left;
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      background: #f6f6f6;
+      color: #111;
     }
 
-    /* Filters */
-    .filters{
-      margin-top:14px;
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 16px;
     }
-    .chip{
-      border:1px solid #ddd; background:#fff; color:#111;
-      padding:10px 12px; border-radius:999px; font-weight:700; cursor:pointer;
-      user-select:none;
-    }
-    .chip[aria-pressed="true"]{ background:#111; color:#fff; border-color:#111; }
 
-    /* Sections + cards */
-    .section{
-      margin-top:16px;
-      background:#fff; border-radius:16px; padding:14px;
-      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    .hero {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .07);
+      text-align: center;
     }
-    .sectionHead{
-      display:flex; justify-content:space-between; align-items:center; gap:10px;
-      margin-bottom:10px;
-    }
-    .sectionHead h2{ margin:0; font-size:18px; }
-    .pill{ font-size:12px; padding:6px 10px; border-radius:999px; background:#f1f1f1; color:#333; }
 
-    .grid{
-      display:grid; gap:12px;
+    .logo {
+      display: block;
+      width: 140px;
+      height: auto;
+      margin: 0 auto 10px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .10);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+    }
+
+    .sub {
+      margin: 0;
+      color: #444;
+      font-size: 15px;
+    }
+
+    .bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn,
+    .btnSecondary {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .btn {
+      background: #111;
+      color: #fff;
+    }
+
+    .btnSecondary {
+      background: #fff;
+      color: #111;
+      border: 1px solid #ddd;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f1f1f1;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: #444;
+      font-size: 14px;
+      background: #fff;
+      border: 1px dashed #ddd;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .filters {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .chip {
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #111;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chip[aria-pressed="true"] {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .section {
+      margin-top: 16px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+    }
+
+    .sectionHead {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .sectionHead h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .pill {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f1f1f1;
+      color: #333;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
       grid-template-columns: 1fr;
     }
-    @media (min-width: 740px){ .grid{ grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1020px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }
 
-    .card{
-      border:1px solid #eee; border-radius:16px; overflow:hidden; background:#fff;
-      display:flex; flex-direction:column;
+    @media (min-width: 740px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
-    .photo{
+
+    @media (min-width: 1020px) {
+      .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .card {
+      border: 1px solid #eee;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .photo {
       aspect-ratio: 4 / 3;
-      width:100%;
-      background:#f0f0f0;
-      object-fit:cover;
-      display:block;
-    }
-    .cardBody{ padding:12px; display:flex; flex-direction:column; gap:8px; }
-    .titleRow{ display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
-    .name{ font-weight:900; font-size:16px; line-height:1.15; }
-    .price{
-      font-weight:900; white-space:nowrap;
-      background:#111; color:#fff; padding:6px 10px; border-radius:999px;
-      font-size:13px;
-    }
-    .desc{ color:#444; font-size:13px; line-height:1.35; }
-    .badges{ display:flex; flex-wrap:wrap; gap:6px; }
-    .badge{
-      font-size:12px; padding:6px 10px; border-radius:999px;
-      background:#f1f1f1; color:#111; border:1px solid #eee;
-      font-weight:700;
+      width: 100%;
+      background: #f0f0f0;
+      object-fit: cover;
+      display: block;
     }
 
-    .addons{
-      border-top:1px solid #f0f0f0; padding-top:10px; margin-top:2px;
-      display:flex; flex-direction:column; gap:6px;
+    .cardBody {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-    .addonsLabel{ font-weight:900; font-size:12px; color:#222; letter-spacing:.2px; }
-    .addonList{ margin:0; padding-left:18px; color:#333; font-size:13px; }
-    .addonList li{ margin:3px 0; }
 
-    .footer{ color:#666; font-size:12px; text-align:center; margin:14px 0 6px; }
-  
-    /* Footer social link */
-    .footer .social{
-      margin-top:10px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      text-decoration:none;
-      color:#111;
-      font-weight:800;
+    .titleRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
     }
-    .footer .social svg{ width:18px; height:18px; display:block; }
-    .footer .social:hover{ text-decoration:underline; }
 
+    .name {
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 1.15;
+    }
+
+    .price {
+      font-weight: 900;
+      white-space: nowrap;
+      background: #111;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .desc {
+      color: #444;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f1f1f1;
+      color: #111;
+      border: 1px solid #eee;
+      font-weight: 700;
+    }
+
+    .footer {
+      color: #666;
+      font-size: 12px;
+      text-align: center;
+      margin: 14px 0 6px;
+    }
+
+    .social {
+      margin-top: 10px;
+      display: inline-block;
+      text-decoration: none;
+      color: #111;
+      font-weight: 800;
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
+
     <div class="hero">
-      <img class="logo" src="images/logo.jpg" alt="Spud & Frog logo" />
+      <img
+        class="logo"
+        src="images/logo.jpg"
+        alt="Spud & Frog logo"
+      />
+
       <h1>Spud & Frog</h1>
-      <p class="sub">Worksite meals — delicious, hearty and ready to nuke!</p>
+
+      <p class="sub">
+        Worksite meals — delicious, hearty and ready to reheat!
+      </p>
 
       <div class="bar">
         <a class="btn" href="form.html">Order Now</a>
         <a class="btnSecondary" href="index.html">Home</a>
-        <span class="tag">Photos</span>
-        <span class="tag">Item-by-item add-ons</span>
-        <span class="tag">Blank prices show $—</span>
+
+        <span class="tag">Breakfast</span>
+        <span class="tag">Lunch</span>
+        <span class="tag">Made for the worksite</span>
       </div>
 
       <div class="note">
-        <strong>How ordering works:</strong> Tap <strong>Order Now</strong>, choose your date(s), pick items, then add quantities.
-        <div style="margin-top:6px;"><strong>Halal option:</strong> Mark “Halal” on the order form (where available).</div>
+        <strong>How ordering works:</strong>
+        Tap <strong>Order Now</strong>, choose your date,
+        select your items and enter the quantities.
+
+        <div style="margin-top: 6px;">
+          <strong>Halal option:</strong>
+          Mark Halal on the order form where available.
+        </div>
       </div>
 
       <div class="filters" id="filters"></div>
@@ -150,217 +294,213 @@
     <div id="sections"></div>
 
     <div class="footer">
-      © <span id="y"></span> Spud &amp; Frog • Prices subject to change • Worksite pickup / delivery as arranged
-      <div style="margin-top:8px;">
-        <a class="social" href="https://www.instagram.com/spud_frog/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a6 6 0 1 1 0 12a6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm6.5-.9a1.1 1.1 0 1 1 0 2.2a1.1 1.1 0 0 1 0-2.2z"/>
-          </svg>
-          <span>@spudnfrog</span>
+      © <span id="year"></span> Spud &amp; Frog
+      • Prices subject to change
+      • Worksite pickup or delivery as arranged
+
+      <div>
+        <a
+          class="social"
+          href="https://www.instagram.com/spud_frog/"
+          target="_blank"
+          rel="noopener"
+        >
+          Instagram: @spud_frog
         </a>
       </div>
     </div>
+
   </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-    // Put your photos in: images/items/...
-    // Blank or missing price => shows "$—"
-    // Empty or missing addons => add-ons block is hidden (per your preference)
+    /*
+      EDIT MENU ITEMS BELOW
+    */
+
     const items = [
       {
         category: "Breakfast",
         label: "Morning",
         name: "Breakfast Sandwich",
-        desc: "2 eggs + cheese on a bun. Fast, filling, no nonsense.",
-        price: "$3.00",
+        desc: "2 eggs, sausage and cheese on a bun.",
+        price: "$5.00",
         img: "images/Construction.png",
-        badges: ["Grab & Go"],
-        addonsTitle: "Extras (add-on)",
-        addons: ["Extra cheese (+$1.00)", "Add bacon (+$2.00)"]
+        badges: ["Breakfast", "Grab & Go"]
       },
+
       {
         category: "Lunch",
         label: "Midday",
         name: "Hamburger",
-        desc: "Beef + bun (simple). Add-ons make it yours.",
-        price: "12.50",
+        desc: "Beef burger served on a bun.",
+        price: "$10.00",
         img: "images/breakfast.jpg",
-        badges: ["Hearty"],
-        addonsTitle: "Toppings extra",
-        addons: ["Cheese", "Bacon", "Jalapeños", "Etc"]
+        badges: ["Lunch", "Hearty"]
       },
+
       {
         category: "Lunch",
         label: "Midday",
         name: "Chicken Schnitzel Plate",
-        desc: "Chicken schnitzel with sides. Worksite-ready plate.",
-        price: "",
+        desc: "Crispy chicken schnitzel served as a hearty worksite meal.",
+        price: "$15.00",
         img: "images/cs.jpg",
-        badges: ["Plate"],
-        addonsTitle: "Sides",
-        addons: ["Rice", "Lemon Potatoes", "Pasta"]
+        badges: ["Lunch", "Full Plate"]
       },
+
       {
         category: "Lunch",
         label: "Midday",
-        name: "Handmade Empanadas",
-        desc: "Fresh handmade empanadas — easy to eat and packed with comfort.",
-        price: "",
+        name: "Handmade Beef Empanada",
+        desc: "Fresh handmade beef empanada.",
+        price: "$4.00 each",
         img: "images/empanada.jpg",
-        badges: ["Portable"],
-        addons: [] // no add-ons => hidden
-      },
-      {
-        category: "Misc",
-        label: "Anytime",
-        name: "Energy Drinks",
-        desc: "Grab-and-go.",
-        price: "",
-        img: "images/demand.png",
-        badges: ["Quick"],
-        addons: [] // no add-ons => hidden
+        badges: ["Handmade", "Grab & Go"]
       }
     ];
 
-    // Category filter UI
-    const categories = ["All", ...Array.from(new Set(items.map(i => i.category)))];
-    const filtersEl = document.getElementById("filters");
-    let active = "All";
+    const categories = [
+      "All",
+      ...new Set(items.map(item => item.category))
+    ];
 
-    function makeChip(cat){
-      const b = document.createElement("button");
-      b.className = "chip";
-      b.type = "button";
-      b.textContent = cat;
-      b.setAttribute("aria-pressed", cat === active ? "true" : "false");
-      b.onclick = () => {
-        active = cat;
-        document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed","false"));
-        b.setAttribute("aria-pressed","true");
-        render();
-      };
-      return b;
-    }
-    categories.forEach(c => filtersEl.appendChild(makeChip(c)));
+    const filters = document.getElementById("filters");
+    const sections = document.getElementById("sections");
 
-    // Render sections grouped by category
-    const sectionsEl = document.getElementById("sections");
+    let activeCategory = "All";
 
-    function render(){
-      sectionsEl.innerHTML = "";
+    categories.forEach(category => {
+      const button = document.createElement("button");
 
-      const visible = active === "All" ? items : items.filter(i => i.category === active);
-      const grouped = visible.reduce((acc, item) => {
-        acc[item.category] = acc[item.category] || { label: item.label || "", items: [] };
-        acc[item.category].items.push(item);
-        return acc;
-      }, {});
+      button.className = "chip";
+      button.type = "button";
+      button.textContent = category;
 
-      Object.keys(grouped).forEach(cat => {
-        const sec = document.createElement("div");
-        sec.className = "section";
+      button.setAttribute(
+        "aria-pressed",
+        category === activeCategory ? "true" : "false"
+      );
 
-        const head = document.createElement("div");
-        head.className = "sectionHead";
+      button.addEventListener("click", () => {
+        activeCategory = category;
 
-        const h2 = document.createElement("h2");
-        h2.textContent = cat;
+        document.querySelectorAll(".chip").forEach(chip => {
+          chip.setAttribute("aria-pressed", "false");
+        });
+
+        button.setAttribute("aria-pressed", "true");
+
+        renderMenu();
+      });
+
+      filters.appendChild(button);
+    });
+
+    function renderMenu() {
+      sections.innerHTML = "";
+
+      const visibleItems =
+        activeCategory === "All"
+          ? items
+          : items.filter(
+              item => item.category === activeCategory
+            );
+
+      const groupedItems = {};
+
+      visibleItems.forEach(item => {
+        if (!groupedItems[item.category]) {
+          groupedItems[item.category] = {
+            label: item.label,
+            items: []
+          };
+        }
+
+        groupedItems[item.category].items.push(item);
+      });
+
+      Object.keys(groupedItems).forEach(category => {
+        const section = document.createElement("section");
+        section.className = "section";
+
+        const sectionHead = document.createElement("div");
+        sectionHead.className = "sectionHead";
+
+        const heading = document.createElement("h2");
+        heading.textContent = category;
 
         const pill = document.createElement("span");
         pill.className = "pill";
-        pill.textContent = grouped[cat].label || "Menu";
+        pill.textContent = groupedItems[category].label;
 
-        head.appendChild(h2);
-        head.appendChild(pill);
+        sectionHead.appendChild(heading);
+        sectionHead.appendChild(pill);
 
         const grid = document.createElement("div");
         grid.className = "grid";
 
-        grouped[cat].items.forEach(item => {
-          const card = document.createElement("div");
+        groupedItems[category].items.forEach(item => {
+          const card = document.createElement("article");
           card.className = "card";
 
-          const img = document.createElement("img");
-          img.className = "photo";
-          img.src = item.img || "";
-          img.alt = item.name || "";
+          const image = document.createElement("img");
+          image.className = "photo";
+          image.src = item.img;
+          image.alt = item.name;
+          image.loading = "lazy";
 
-          const body = document.createElement("div");
-          body.className = "cardBody";
+          const cardBody = document.createElement("div");
+          cardBody.className = "cardBody";
 
           const titleRow = document.createElement("div");
           titleRow.className = "titleRow";
 
-          const name = document.createElement("div");
-          name.className = "name";
-          name.textContent = item.name || "";
+          const itemName = document.createElement("div");
+          itemName.className = "name";
+          itemName.textContent = item.name;
 
-          const price = document.createElement("div");
-          price.className = "price";
-          const p = (item.price || "").trim();
-          price.textContent = p ? p : "$—";
+          const itemPrice = document.createElement("div");
+          itemPrice.className = "price";
+          itemPrice.textContent = item.price;
 
-          titleRow.appendChild(name);
-          titleRow.appendChild(price);
+          titleRow.appendChild(itemName);
+          titleRow.appendChild(itemPrice);
 
-          body.appendChild(titleRow);
+          const description = document.createElement("div");
+          description.className = "desc";
+          description.textContent = item.desc;
 
-          if ((item.desc || "").trim()){
-            const desc = document.createElement("div");
-            desc.className = "desc";
-            desc.textContent = item.desc;
-            body.appendChild(desc);
-          }
+          const badges = document.createElement("div");
+          badges.className = "badges";
 
-          if ((item.badges || []).length){
-            const badges = document.createElement("div");
-            badges.className = "badges";
-            (item.badges || []).forEach(b => {
-              const s = document.createElement("span");
-              s.className = "badge";
-              s.textContent = b;
-              badges.appendChild(s);
-            });
-            body.appendChild(badges);
-          }
+          item.badges.forEach(badgeText => {
+            const badge = document.createElement("span");
+            badge.className = "badge";
+            badge.textContent = badgeText;
+            badges.appendChild(badge);
+          });
 
-          // Add-ons: HIDE if none
-          const addonsArr = Array.isArray(item.addons) ? item.addons.filter(x => (x || "").trim()) : [];
-          if (addonsArr.length){
-            const addons = document.createElement("div");
-            addons.className = "addons";
+          cardBody.appendChild(titleRow);
+          cardBody.appendChild(description);
+          cardBody.appendChild(badges);
 
-            const addonsLabel = document.createElement("div");
-            addonsLabel.className = "addonsLabel";
-            addonsLabel.textContent = (item.addonsTitle || "Add-ons").trim();
+          card.appendChild(image);
+          card.appendChild(cardBody);
 
-            const ul = document.createElement("ul");
-            ul.className = "addonList";
-            addonsArr.forEach(a => {
-              const li = document.createElement("li");
-              li.textContent = a;
-              ul.appendChild(li);
-            });
-
-            addons.appendChild(addonsLabel);
-            addons.appendChild(ul);
-            body.appendChild(addons);
-          }
-
-          card.appendChild(img);
-          card.appendChild(body);
           grid.appendChild(card);
         });
 
-        sec.appendChild(head);
-        sec.appendChild(grid);
-        sectionsEl.appendChild(sec);
+        section.appendChild(sectionHead);
+        section.appendChild(grid);
+
+        sections.appendChild(section);
       });
     }
 
-    render();
+    renderMenu();
   </script>
 </body>
 </html>
