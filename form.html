@@ -112,50 +112,33 @@
 
       // ✅ EDIT THESE MENUS
       // For customizable items, add: { name, customizable:true, custom:{ proteinRadio:[], addOns:[], remove:[] } }
-      const MENUS = {
-        "Breakfast": [
-          {
-            name: "Breakfast Sandwich",
-            customizable: true,
-            custom: {
-              proteinRadio: ["Sausage", "Bacon", "Ham", "No meat"],
-              addOns: ["Guac", "Avocado", "Extra cheese"],
-              remove: ["No cheese", "No egg"]
-            }
-          },
-          {
-            name: "Egg & Cheese Wrap",
-            customizable: true,
-            custom: {
-              proteinRadio: ["Sausage", "Bacon", "Ham", "No meat"],
-              addOns: ["Guac", "Avocado", "Extra cheese"],
-              remove: ["No cheese", "No egg"]
-            }
-          },
-          { name: "Coffee" },
-          { name: "Oatmeal Cup" }
-        ],
-        "Lunch": [
-          {
-            name: "Basic Burger",
-            customizable: true,
-            custom: {
-              proteinRadio: ["Beef", "Chicken", "Veggie"],
-              addOns: ["Bacon", "Cheese", "Avocado", "Guac"],
-              remove: ["No onions", "No pickles", "No ketchup", "No mustard"]
-            }
-          },
-          { name: "Mac & Cheese" },
-          { name: "Chili" },
-          { name: "Beef Stew" }
-        ],
-        "Snacks": [
-          { name: "Chips" },
-          { name: "Cookie" },
-          { name: "Granola Bar" },
-          { name: "Pop" }
-        ]
-      };
+ const MENUS = {
+  "Breakfast": [
+    {
+      name: "Breakfast Sandwich",
+      customizable: true,
+      custom: {
+        proteinRadio: ["Sausage", "Bacon", "Ham", "No meat"],
+        addOns: ["Guac", "Avocado", "Extra cheese"],
+        remove: ["No cheese", "No egg"]
+      }
+    }
+  ],
+
+  "Lunch": [
+    { name: "Hamburger" },
+    { name: "Beef Empanada" },
+    { name: "Chicken Schnitzel" },
+    { name: "Beef Stew" }
+  ],
+
+  "Snacks": [
+    { name: "Monster Energy Drink" },
+    { name: "Coke" },
+    { name: "Water" },
+    { name: "Protein Bar" }
+  ]
+};};
 
       const daysContainer = document.getElementById("daysContainer");
       const addDayBtn = document.getElementById("addDayBtn");
