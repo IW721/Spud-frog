@@ -4,151 +4,408 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spud & Frog — Order</title>
+
   <style>
-    body { font-family: system-ui, Arial, sans-serif; margin: 0; background:#f6f6f6; }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 16px; }
-    .card { background:#fff; border-radius: 14px; padding: 16px; box-shadow: 0 6px 18px rgba(0,0,0,.07); }
-    h1 { margin: 0 0 8px; font-size: 22px; }
-    p { margin: 0 0 12px; color:#444; }
-    label { display:block; margin: 12px 0 6px; font-weight: 600; }
-    input, select, textarea, button { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 16px; }
-    textarea { min-height: 90px; resize: vertical; }
-    button { background:#111; color:#fff; border:none; font-weight: 700; cursor:pointer; margin-top: 14px; }
-    button:active { transform: translateY(1px); }
-
-    .row { display:flex; gap: 12px; }
-    .row > div { flex: 1; }
-
-    .day { border: 1px solid #eee; border-radius: 12px; padding: 12px; margin-top: 12px; background:#fafafa; }
-    .dayhead { display:flex; gap: 10px; align-items:center; }
-    .dayhead h2 { font-size: 16px; margin: 0; flex:1; }
-
-    .btnSecondary {
-      background:#fff; color:#111; border: 1px solid #ddd; font-weight: 700;
-      padding: 10px 12px; border-radius: 10px; cursor:pointer; width:auto;
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      background: #f6f6f6;
     }
 
-    .items { display:grid; gap: 10px; margin-top: 6px; }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 16px;
+    }
 
-    /* Item rows (keeps your simple vibe but supports customization) */
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .07);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: #444;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    button {
+      background: #111;
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 14px;
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .row > div {
+      flex: 1;
+    }
+
+    .day {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 12px;
+      background: #fafafa;
+    }
+
+    .dayhead {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .dayhead h2 {
+      font-size: 16px;
+      margin: 0;
+      flex: 1;
+    }
+
+    .btnSecondary {
+      background: #fff;
+      color: #111;
+      border: 1px solid #ddd;
+      font-weight: 700;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: auto;
+    }
+
+    .items {
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
     .itemRow {
-      background:#fff;
+      background: #fff;
       border: 1px solid #eee;
       border-radius: 12px;
       padding: 10px;
     }
-    .itemTop { display:flex; gap:10px; align-items:center; }
-    .itemTop .name { flex: 1; font-weight: 650; }
-    .qty { width: 110px; }
+
+    .itemTop {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .itemTop .name {
+      flex: 1;
+      font-weight: 650;
+    }
+
+    .qty {
+      width: 110px;
+    }
 
     .custom {
       margin-top: 10px;
       padding-top: 10px;
       border-top: 1px dashed #e5e5e5;
-      display:none;
+      display: none;
     }
-    .customTitle { font-weight: 700; font-size: 13px; margin-bottom: 6px; color:#333; }
 
-    .muted { color:#666; font-size: 13px; margin-top: 6px; }
-    .notice { font-size: 13px; color:#444; background:#fff; border:1px dashed #ddd; padding:10px; border-radius:10px; margin-top:10px; }
+    .customTitle {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: #333;
+    }
 
-    .choices { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+    .muted {
+      color: #666;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .notice {
+      font-size: 13px;
+      color: #444;
+      background: #fff;
+      border: 1px dashed #ddd;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
     .choice {
-      display:flex; gap:8px; align-items:center;
-      border:1px solid #ddd; background:#fff; padding: 8px 10px; border-radius: 999px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 8px 10px;
+      border-radius: 999px;
       width: auto;
     }
-    .choice input { width:auto; padding:0; border:none; }
-    .choice span { font-weight: 600; font-size: 14px; }
 
-    .tiny { font-size: 12px; color:#666; margin-top: 10px; }
+    .choice input {
+      width: auto;
+      padding: 0;
+      border: none;
+    }
+
+    .choice span {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .tiny {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .qty {
+        width: 90px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="card">
       <h1>Spud & Frog — Order</h1>
-      <p>Pick a date → pick Breakfast/Lunch/Snacks → the menu updates → add quantities → customize if needed → send.</p>
 
-      <form id="orderForm" action="https://formspree.io/f/xreqygke" method="POST">
-        <input type="hidden" name="_subject" value="New Spud & Frog Order" />
-        <input type="hidden" name="order_summary" id="order_summary" />
+      <p>
+        Pick a date → pick Breakfast, Lunch, or Snacks → add quantities →
+        customize if needed → send.
+      </p>
 
-        <label>Your name</label>
-        <input name="name" autocomplete="name" required />
+      <form
+        id="orderForm"
+        action="https://formspree.io/f/xreqygke"
+        method="POST"
+      >
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Spud & Frog Order"
+        />
 
-        <label>Phone</label>
-        <input name="phone" autocomplete="tel" inputmode="tel" required />
+        <input
+          type="hidden"
+          name="order_summary"
+          id="order_summary"
+        />
 
-        <label>Email (for receipt)</label>
-        <input name="customer_email" type="email" autocomplete="email" required />
+        <label for="customerName">Your name</label>
+        <input
+          id="customerName"
+          name="name"
+          autocomplete="name"
+          required
+        />
 
-        <label style="margin-top:14px;">Dietary</label>
-        <div style="display:flex; gap:10px; align-items:center; padding:10px 0;">
-          <input id="halal" name="halal" type="checkbox" value="Yes" style="width:auto; transform:scale(1.2);" />
-          <label for="halal" style="margin:0; font-weight:600;">Halal</label>
+        <label for="customerPhone">Phone</label>
+        <input
+          id="customerPhone"
+          name="phone"
+          autocomplete="tel"
+          inputmode="tel"
+          required
+        />
+
+        <label for="customerEmail">Email for receipt</label>
+        <input
+          id="customerEmail"
+          name="customer_email"
+          type="email"
+          autocomplete="email"
+          required
+        />
+
+        <label style="margin-top: 14px;">Dietary</label>
+
+        <div
+          style="
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 10px 0;
+          "
+        >
+          <input
+            id="halal"
+            name="halal"
+            type="checkbox"
+            value="Yes"
+            style="width: auto; transform: scale(1.2);"
+          />
+
+          <label
+            for="halal"
+            style="margin: 0; font-weight: 600;"
+          >
+            Halal
+          </label>
         </div>
 
         <label>Order dates</label>
+
         <div id="daysContainer"></div>
 
-        <button type="button" id="addDayBtn" class="btnSecondary" style="margin-top:12px;">
+        <button
+          type="button"
+          id="addDayBtn"
+          class="btnSecondary"
+          style="margin-top: 12px;"
+        >
           + Add another date
         </button>
 
-        <label>General notes (optional)</label>
-        <textarea name="notes" placeholder="Allergies, no onions, etc."></textarea>
+        <label for="generalNotes">General notes (optional)</label>
 
-        <input type="text" name="_gotcha" style="display:none" />
+        <textarea
+          id="generalNotes"
+          name="notes"
+          placeholder="Allergies, no onions, delivery instructions, etc."
+        ></textarea>
+
+        <input
+          type="text"
+          name="_gotcha"
+          style="display: none;"
+        />
 
         <button type="submit">Send Order</button>
-        <div class="tiny">If you don’t get a confirmation, tell Cesar.</div>
+
+        <div class="tiny">
+          If you do not receive confirmation, please contact Cesar.
+        </div>
       </form>
     </div>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const MENUS = {
+        Breakfast: [
+          {
+            name: "Breakfast Sandwich",
+            customizable: true,
+            custom: {
+              proteinRadio: [
+                "Sausage",
+                "Bacon",
+                "Ham",
+                "No meat"
+              ],
+              addOns: [
+                "Guac",
+                "Avocado",
+                "Extra cheese"
+              ],
+              remove: [
+                "No cheese",
+                "No egg"
+              ]
+            }
+          }
+        ],
 
-      // ✅ EDIT THESE MENUS
-      // For customizable items, add: { name, customizable:true, custom:{ proteinRadio:[], addOns:[], remove:[] } }
- const MENUS = {
-  "Breakfast": [
-    {
-      name: "Breakfast Sandwich",
-      customizable: true,
-      custom: {
-        proteinRadio: ["Sausage", "Bacon", "Ham", "No meat"],
-        addOns: ["Guac", "Avocado", "Extra cheese"],
-        remove: ["No cheese", "No egg"]
-      }
-    }
-  ],
+        Lunch: [
+          {
+            name: "Hamburger"
+          },
+          {
+            name: "Beef Empanada"
+          },
+          {
+            name: "Chicken Schnitzel"
+          },
+          {
+            name: "Beef Stew"
+          }
+        ],
 
-  "Lunch": [
-    { name: "Hamburger" },
-    { name: "Beef Empanada" },
-    { name: "Chicken Schnitzel" },
-    { name: "Beef Stew" }
-  ],
+        Snacks: [
+          {
+            name: "Monster Energy Drink"
+          },
+          {
+            name: "Coke"
+          },
+          {
+            name: "Water"
+          },
+          {
+            name: "Protein Bar"
+          }
+        ]
+      };
 
-  "Snacks": [
-    { name: "Monster Energy Drink" },
-    { name: "Coke" },
-    { name: "Water" },
-    { name: "Protein Bar" }
-  ]
-};
+      const daysContainer =
+        document.getElementById("daysContainer");
 
-      const daysContainer = document.getElementById("daysContainer");
-      const addDayBtn = document.getElementById("addDayBtn");
-      const orderForm = document.getElementById("orderForm");
-      const orderSummaryEl = document.getElementById("order_summary");
+      const addDayBtn =
+        document.getElementById("addDayBtn");
+
+      const orderForm =
+        document.getElementById("orderForm");
+
+      const orderSummaryEl =
+        document.getElementById("order_summary");
 
       let dayUidCounter = 0;
 
-      function slug(s) {
-        return (s || "")
+      function slug(value) {
+        return (value || "")
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "_")
           .replace(/^_+|_+$/g, "");
@@ -156,9 +413,15 @@
 
       function chipHTML(type, nameAttr, value) {
         const id = `${nameAttr}_${slug(value)}`;
+
         return `
           <label class="choice" for="${id}">
-            <input id="${id}" type="${type}" name="${nameAttr}" value="${value}">
+            <input
+              id="${id}"
+              type="${type}"
+              name="${nameAttr}"
+              value="${value}"
+            >
             <span>${value}</span>
           </label>
         `;
@@ -168,13 +431,22 @@
         itemsWrap.innerHTML = "";
 
         if (!mealType) {
-          itemsWrap.innerHTML = `<div class="notice">Pick a meal type to see the menu.</div>`;
+          itemsWrap.innerHTML = `
+            <div class="notice">
+              Pick a meal type to see the menu.
+            </div>
+          `;
           return;
         }
 
         const items = MENUS[mealType] || [];
+
         if (items.length === 0) {
-          itemsWrap.innerHTML = `<div class="notice">No menu items set for ${mealType} yet.</div>`;
+          itemsWrap.innerHTML = `
+            <div class="notice">
+              No menu items are set for ${mealType}.
+            </div>
+          `;
           return;
         }
 
@@ -182,79 +454,173 @@
         list.className = "items";
 
         items.forEach((item) => {
-          const itemKey = `${dayUid}_${slug(item.name)}`;
+          const itemKey =
+            `${dayUid}_${slug(item.name)}`;
 
-          const row = document.createElement("div");
+          const row =
+            document.createElement("div");
+
           row.className = "itemRow";
 
           row.innerHTML = `
             <div class="itemTop">
               <div class="name">${item.name}</div>
-              <input class="qty" type="number" min="0" value="0"
-                data-item="${item.name.replaceAll('"','&quot;')}" />
+
+              <input
+                class="qty"
+                type="number"
+                min="0"
+                step="1"
+                value="0"
+                aria-label="Quantity for ${item.name}"
+                data-item="${item.name.replaceAll('"', "&quot;")}"
+              />
             </div>
 
             ${
-              item.customizable ? `
-              <div class="custom" data-custom="1">
-                <div class="customTitle">Customize</div>
+              item.customizable
+                ? `
+                  <div class="custom" data-custom="1">
+                    <div class="customTitle">
+                      Customize
+                    </div>
 
-                ${
-                  (item.custom?.proteinRadio?.length || 0) ? `
-                  <div class="muted">Protein</div>
-                  <div class="choices">
-                    ${item.custom.proteinRadio.map(v => chipHTML("radio", `${itemKey}_protein`, v)).join("")}
+                    ${
+                      item.custom?.proteinRadio?.length
+                        ? `
+                          <div class="muted">
+                            Protein
+                          </div>
+
+                          <div class="choices">
+                            ${item.custom.proteinRadio
+                              .map((value) =>
+                                chipHTML(
+                                  "radio",
+                                  `${itemKey}_protein`,
+                                  value
+                                )
+                              )
+                              .join("")}
+                          </div>
+                        `
+                        : ""
+                    }
+
+                    ${
+                      item.custom?.addOns?.length
+                        ? `
+                          <div
+                            class="muted"
+                            style="margin-top: 10px;"
+                          >
+                            Add-ons
+                          </div>
+
+                          <div class="choices">
+                            ${item.custom.addOns
+                              .map((value) =>
+                                chipHTML(
+                                  "checkbox",
+                                  `${itemKey}_addons`,
+                                  value
+                                )
+                              )
+                              .join("")}
+                          </div>
+                        `
+                        : ""
+                    }
+
+                    ${
+                      item.custom?.remove?.length
+                        ? `
+                          <div
+                            class="muted"
+                            style="margin-top: 10px;"
+                          >
+                            Remove
+                          </div>
+
+                          <div class="choices">
+                            ${item.custom.remove
+                              .map((value) =>
+                                chipHTML(
+                                  "checkbox",
+                                  `${itemKey}_remove`,
+                                  value
+                                )
+                              )
+                              .join("")}
+                          </div>
+                        `
+                        : ""
+                    }
+
+                    <div
+                      class="muted"
+                      style="margin-top: 10px;"
+                    >
+                      Item notes (optional)
+                    </div>
+
+                    <input
+                      type="text"
+                      class="itemNotes"
+                      placeholder="e.g. extra napkins, well done"
+                    />
                   </div>
-                  ` : ""
-                }
-
-                ${
-                  (item.custom?.addOns?.length || 0) ? `
-                  <div class="muted" style="margin-top:10px;">Add-ons</div>
-                  <div class="choices">
-                    ${item.custom.addOns.map(v => chipHTML("checkbox", `${itemKey}_addons`, v)).join("")}
-                  </div>
-                  ` : ""
-                }
-
-                ${
-                  (item.custom?.remove?.length || 0) ? `
-                  <div class="muted" style="margin-top:10px;">Remove</div>
-                  <div class="choices">
-                    ${item.custom.remove.map(v => chipHTML("checkbox", `${itemKey}_remove`, v)).join("")}
-                  </div>
-                  ` : ""
-                }
-
-                <div class="muted" style="margin-top:10px;">Item notes (optional)</div>
-                <input type="text" class="itemNotes" placeholder="e.g., extra napkins, well done" />
-              </div>
-              ` : ""
+                `
+                : ""
             }
           `;
 
-          // qty toggles custom area
-          const qtyInput = row.querySelector(".qty");
-          const customDiv = row.querySelector(".custom");
+          const qtyInput =
+            row.querySelector(".qty");
+
+          const customDiv =
+            row.querySelector(".custom");
 
           function toggleCustom() {
-            const n = parseInt(qtyInput.value || "0", 10);
-            if (!customDiv) return;
+            const quantity =
+              parseInt(qtyInput.value || "0", 10);
 
-            customDiv.style.display = (n > 0) ? "block" : "none";
+            if (!customDiv) {
+              return;
+            }
 
-            // If qty goes back to 0, clear customization inputs
-            if (n <= 0) {
-              customDiv.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(i => i.checked = false);
-              const notes = customDiv.querySelector(".itemNotes");
-              if (notes) notes.value = "";
+            customDiv.style.display =
+              quantity > 0 ? "block" : "none";
+
+            if (quantity <= 0) {
+              customDiv
+                .querySelectorAll(
+                  'input[type="checkbox"], input[type="radio"]'
+                )
+                .forEach((input) => {
+                  input.checked = false;
+                });
+
+              const notes =
+                customDiv.querySelector(".itemNotes");
+
+              if (notes) {
+                notes.value = "";
+              }
             }
           }
 
-          qtyInput.addEventListener("input", toggleCustom);
-          qtyInput.addEventListener("change", toggleCustom);
-          toggleCustom();
+          qtyInput.addEventListener(
+            "input",
+            toggleCustom
+          );
 
+          qtyInput.addEventListener(
+            "change",
+            toggleCustom
+          );
+
+          toggleCustom();
           list.appendChild(row);
         });
 
@@ -262,173 +628,378 @@
       }
 
       function dayBlockEl(dayUid) {
-        const block = document.createElement("div");
+        const block =
+          document.createElement("div");
+
         block.className = "day";
         block.dataset.uid = dayUid;
 
         block.innerHTML = `
           <div class="dayhead">
             <h2>Order for a date</h2>
-            <button type="button" class="btnSecondary removeDayBtn">Remove</button>
+
+            <button
+              type="button"
+              class="btnSecondary removeDayBtn"
+            >
+              Remove
+            </button>
           </div>
 
           <div class="row">
             <div>
               <label>Date</label>
-              <input type="date" class="dateInput" required />
-              <div class="muted">Choose the date first, then pick meal type.</div>
+
+              <input
+                type="date"
+                class="dateInput"
+                required
+              />
+
+              <div class="muted">
+                Choose the date first, then choose
+                the meal type.
+              </div>
             </div>
 
             <div>
               <label>Meal type</label>
-              <select class="mealSelect" required disabled>
+
+              <select
+                class="mealSelect"
+                required
+                disabled
+              >
                 <option value="">Choose…</option>
-                <option>Breakfast</option>
-                <option>Lunch</option>
-                <option>Snacks</option>
+                <option value="Breakfast">
+                  Breakfast
+                </option>
+                <option value="Lunch">
+                  Lunch
+                </option>
+                <option value="Snacks">
+                  Snacks
+                </option>
               </select>
             </div>
           </div>
 
           <label>Items</label>
+
           <div class="itemsWrap"></div>
         `;
+
         return block;
       }
 
       function ensureRemoveButtons() {
-        const blocks = [...daysContainer.querySelectorAll(".day")];
-        blocks.forEach(b => {
-          const btn = b.querySelector(".removeDayBtn");
-          btn.style.display = (blocks.length <= 1) ? "none" : "inline-block";
+        const blocks = [
+          ...daysContainer.querySelectorAll(".day")
+        ];
+
+        blocks.forEach((block) => {
+          const button =
+            block.querySelector(".removeDayBtn");
+
+          button.style.display =
+            blocks.length <= 1
+              ? "none"
+              : "inline-block";
         });
       }
 
       function wireBlock(block) {
-        const dateInput = block.querySelector(".dateInput");
-        const mealSelect = block.querySelector(".mealSelect");
-        const removeBtn = block.querySelector(".removeDayBtn");
-        const itemsWrap = block.querySelector(".itemsWrap");
-        const dayUid = block.dataset.uid;
+        const dateInput =
+          block.querySelector(".dateInput");
 
-        // default state
-        itemsWrap.innerHTML = `<div class="notice">Pick a meal type to see the menu.</div>`;
+        const mealSelect =
+          block.querySelector(".mealSelect");
 
-        dateInput.addEventListener("change", () => {
-          if (dateInput.value) {
-            mealSelect.disabled = false;
-          } else {
-            mealSelect.value = "";
-            mealSelect.disabled = true;
-            itemsWrap.innerHTML = `<div class="notice">Pick a meal type to see the menu.</div>`;
+        const removeBtn =
+          block.querySelector(".removeDayBtn");
+
+        const itemsWrap =
+          block.querySelector(".itemsWrap");
+
+        const dayUid =
+          block.dataset.uid;
+
+        itemsWrap.innerHTML = `
+          <div class="notice">
+            Pick a meal type to see the menu.
+          </div>
+        `;
+
+        dateInput.addEventListener(
+          "change",
+          () => {
+            if (dateInput.value) {
+              mealSelect.disabled = false;
+            } else {
+              mealSelect.value = "";
+              mealSelect.disabled = true;
+
+              itemsWrap.innerHTML = `
+                <div class="notice">
+                  Pick a meal type to see the menu.
+                </div>
+              `;
+            }
           }
-        });
+        );
 
-        mealSelect.addEventListener("change", () => {
-          renderItems(itemsWrap, mealSelect.value, dayUid);
-        });
+        mealSelect.addEventListener(
+          "change",
+          () => {
+            renderItems(
+              itemsWrap,
+              mealSelect.value,
+              dayUid
+            );
+          }
+        );
 
-        removeBtn.addEventListener("click", () => {
-          block.remove();
-          ensureRemoveButtons();
-        });
+        removeBtn.addEventListener(
+          "click",
+          () => {
+            block.remove();
+            ensureRemoveButtons();
+          }
+        );
       }
 
       function addDayBlock() {
-        const dayUid = `d${++dayUidCounter}`;
-        const block = dayBlockEl(dayUid);
+        const dayUid =
+          `d${++dayUidCounter}`;
+
+        const block =
+          dayBlockEl(dayUid);
+
         daysContainer.appendChild(block);
         wireBlock(block);
         ensureRemoveButtons();
       }
 
-      function getCheckedValues(root, selector) {
-        return [...root.querySelectorAll(selector)]
-          .filter(i => i.checked)
-          .map(i => i.value);
+      function getCheckedValues(
+        root,
+        selector
+      ) {
+        return [
+          ...root.querySelectorAll(selector)
+        ]
+          .filter((input) => input.checked)
+          .map((input) => input.value);
       }
 
       function buildOrderSummary() {
-        const dayBlocks = [...daysContainer.querySelectorAll(".day")];
-        let lines = [];
+        const dayBlocks = [
+          ...daysContainer.querySelectorAll(".day")
+        ];
 
-        const halal = document.getElementById("halal").checked ? "Yes" : "No";
+        const lines = [];
+
+        const halal =
+          document.getElementById("halal").checked
+            ? "Yes"
+            : "No";
+
         lines.push(`Halal: ${halal}`);
         lines.push("");
 
         let totalItems = 0;
 
-        for (const [i, d] of dayBlocks.entries()) {
-          const dateVal = d.querySelector(".dateInput").value;
-          const mealVal = d.querySelector(".mealSelect").value;
+        for (
+          const [index, day] of
+          dayBlocks.entries()
+        ) {
+          const dateValue =
+            day.querySelector(".dateInput").value;
 
-          if (!dateVal) return { ok:false, message: "One of the date fields is blank." };
-          if (!mealVal) return { ok:false, message: `Meal type missing for ${dateVal || "a date"}.` };
+          const mealValue =
+            day.querySelector(".mealSelect").value;
 
-          lines.push(`Day ${i+1}: ${dateVal} (${mealVal})`);
+          if (!dateValue) {
+            return {
+              ok: false,
+              message:
+                "One of the date fields is blank."
+            };
+          }
 
-          const itemRows = [...d.querySelectorAll(".itemRow")];
+          if (!mealValue) {
+            return {
+              ok: false,
+              message:
+                `Meal type missing for ${
+                  dateValue || "a date"
+                }.`
+            };
+          }
+
+          lines.push(
+            `Day ${index + 1}: ` +
+            `${dateValue} (${mealValue})`
+          );
+
+          const itemRows = [
+            ...day.querySelectorAll(".itemRow")
+          ];
+
           let anyInDay = false;
 
           itemRows.forEach((row) => {
-            const qtyInput = row.querySelector(".qty");
-            const qty = parseInt(qtyInput.value || "0", 10);
-            if (qty <= 0) return;
+            const qtyInput =
+              row.querySelector(".qty");
+
+            const quantity =
+              parseInt(
+                qtyInput.value || "0",
+                10
+              );
+
+            if (quantity <= 0) {
+              return;
+            }
 
             anyInDay = true;
-            totalItems += qty;
+            totalItems += quantity;
 
-            const itemName = qtyInput.dataset.item;
-            lines.push(`- ${itemName}: ${qty}`);
+            const itemName =
+              qtyInput.dataset.item;
 
-            const customDiv = row.querySelector(".custom");
-            if (customDiv && customDiv.style.display !== "none") {
-              // Protein: checked radio within this custom block
-              const protein = getCheckedValues(customDiv, 'input[type="radio"]').join(", ");
+            lines.push(
+              `- ${itemName}: ${quantity}`
+            );
 
-              // Add-ons / Remove: checked checkboxes within this custom block
-              const addons = getCheckedValues(customDiv, 'div:nth-of-type(1) input[type="checkbox"]'); // safe-ish but we do better below
+            const customDiv =
+              row.querySelector(".custom");
 
-              // Better: just grab ALL checked checkboxes, then split by name suffix
-              const allChecked = [...customDiv.querySelectorAll('input[type="checkbox"]')].filter(x => x.checked);
-              const addOnsList = allChecked.filter(x => (x.name || "").endsWith("_addons")).map(x => x.value);
-              const removeList = allChecked.filter(x => (x.name || "").endsWith("_remove")).map(x => x.value);
+            if (
+              customDiv &&
+              customDiv.style.display !== "none"
+            ) {
+              const protein =
+                getCheckedValues(
+                  customDiv,
+                  'input[type="radio"]'
+                ).join(", ");
 
-              const notesEl = customDiv.querySelector(".itemNotes");
-              const notes = notesEl && notesEl.value.trim() ? notesEl.value.trim() : "";
+              const allChecked = [
+                ...customDiv.querySelectorAll(
+                  'input[type="checkbox"]'
+                )
+              ].filter(
+                (input) => input.checked
+              );
 
-              if (protein) lines.push(`  • Protein: ${protein}`);
-              if (addOnsList.length) lines.push(`  • Add-ons: ${addOnsList.join(", ")}`);
-              if (removeList.length) lines.push(`  • Remove: ${removeList.join(", ")}`);
-              if (notes) lines.push(`  • Notes: ${notes}`);
+              const addOnsList =
+                allChecked
+                  .filter((input) =>
+                    (input.name || "")
+                      .endsWith("_addons")
+                  )
+                  .map(
+                    (input) => input.value
+                  );
+
+              const removeList =
+                allChecked
+                  .filter((input) =>
+                    (input.name || "")
+                      .endsWith("_remove")
+                  )
+                  .map(
+                    (input) => input.value
+                  );
+
+              const notesElement =
+                customDiv.querySelector(
+                  ".itemNotes"
+                );
+
+              const notes =
+                notesElement &&
+                notesElement.value.trim()
+                  ? notesElement.value.trim()
+                  : "";
+
+              if (protein) {
+                lines.push(
+                  `  • Protein: ${protein}`
+                );
+              }
+
+              if (addOnsList.length) {
+                lines.push(
+                  `  • Add-ons: ` +
+                  addOnsList.join(", ")
+                );
+              }
+
+              if (removeList.length) {
+                lines.push(
+                  `  • Remove: ` +
+                  removeList.join(", ")
+                );
+              }
+
+              if (notes) {
+                lines.push(
+                  `  • Notes: ${notes}`
+                );
+              }
             }
           });
 
-          if (!anyInDay) lines.push("- (no items selected)");
+          if (!anyInDay) {
+            lines.push(
+              "- No items selected"
+            );
+          }
+
           lines.push("");
         }
 
-        if (totalItems <= 0) return { ok:false, message: "Add at least 1 item before sending." };
+        if (totalItems <= 0) {
+          return {
+            ok: false,
+            message:
+              "Add at least one item before sending."
+          };
+        }
 
-        return { ok:true, summary: lines.join("\n").trim() };
+        return {
+          ok: true,
+          summary: lines
+            .join("\n")
+            .trim()
+        };
       }
 
-      addDayBtn.addEventListener("click", addDayBlock);
+      addDayBtn.addEventListener(
+        "click",
+        addDayBlock
+      );
 
-      orderForm.addEventListener("submit", (e) => {
-        const res = buildOrderSummary();
-        if (!res.ok) {
-          e.preventDefault();
-          alert(res.message);
-          return;
+      orderForm.addEventListener(
+        "submit",
+        (event) => {
+          const result =
+            buildOrderSummary();
+
+          if (!result.ok) {
+            event.preventDefault();
+            alert(result.message);
+            return;
+          }
+
+          orderSummaryEl.value =
+            result.summary;
         }
-        orderSummaryEl.value = res.summary;
-      });
+      );
 
-      // start with one
       addDayBlock();
     });
   </script>
 </body>
 </html>
-
