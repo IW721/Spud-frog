@@ -223,8 +223,8 @@
       <h1>Spud & Frog — Order</h1>
 
       <p>
-        Pick a date → pick Breakfast, Lunch, or Snacks → add quantities →
-        customize if needed → send.
+        Pick a date → choose your shift → pick Breakfast, Lunch, or Snacks →
+        add quantities → customize if needed → send.
       </p>
 
       <form
@@ -368,7 +368,7 @@
           },
           {
             name: "Chicken Schnitzel"
-          },
+          }
         ],
 
         Snacks: [
@@ -654,9 +654,26 @@
               />
 
               <div class="muted">
-                Choose the date first, then choose
-                the meal type.
+                Choose the date first.
               </div>
+            </div>
+
+            <div>
+              <label>Shift</label>
+
+              <select
+                class="shiftSelect"
+                required
+                disabled
+              >
+                <option value="">Choose…</option>
+                <option value="Day Shift">
+                  Day Shift
+                </option>
+                <option value="Night Shift">
+                  Night Shift
+                </option>
+              </select>
             </div>
 
             <div>
@@ -709,6 +726,9 @@
         const dateInput =
           block.querySelector(".dateInput");
 
+        const shiftSelect =
+          block.querySelector(".shiftSelect");
+
         const mealSelect =
           block.querySelector(".mealSelect");
 
@@ -723,7 +743,7 @@
 
         itemsWrap.innerHTML = `
           <div class="notice">
-            Pick a meal type to see the menu.
+            Pick a date, shift, and meal type to see the menu.
           </div>
         `;
 
@@ -731,6 +751,27 @@
           "change",
           () => {
             if (dateInput.value) {
+              shiftSelect.disabled = false;
+            } else {
+              shiftSelect.value = "";
+              shiftSelect.disabled = true;
+
+              mealSelect.value = "";
+              mealSelect.disabled = true;
+
+              itemsWrap.innerHTML = `
+                <div class="notice">
+                  Pick a date, shift, and meal type to see the menu.
+                </div>
+              `;
+            }
+          }
+        );
+
+        shiftSelect.addEventListener(
+          "change",
+          () => {
+            if (shiftSelect.value) {
               mealSelect.disabled = false;
             } else {
               mealSelect.value = "";
@@ -738,7 +779,7 @@
 
               itemsWrap.innerHTML = `
                 <div class="notice">
-                  Pick a meal type to see the menu.
+                  Pick a shift and meal type to see the menu.
                 </div>
               `;
             }
@@ -812,6 +853,9 @@
           const dateValue =
             day.querySelector(".dateInput").value;
 
+          const shiftValue =
+            day.querySelector(".shiftSelect").value;
+
           const mealValue =
             day.querySelector(".mealSelect").value;
 
@@ -823,19 +867,25 @@
             };
           }
 
+          if (!shiftValue) {
+            return {
+              ok: false,
+              message:
+                `Shift missing for ${dateValue}.`
+            };
+          }
+
           if (!mealValue) {
             return {
               ok: false,
               message:
-                `Meal type missing for ${
-                  dateValue || "a date"
-                }.`
+                `Meal type missing for ${dateValue}.`
             };
           }
 
           lines.push(
             `Day ${index + 1}: ` +
-            `${dateValue} (${mealValue})`
+            `${dateValue} | ${shiftValue} | ${mealValue}`
           );
 
           const itemRows = [
